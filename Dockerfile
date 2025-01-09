@@ -6,5 +6,5 @@ RUN apt update
 # curlというライブラリをインストール
 RUN apt install -y curl
 
-# sample.txt を app　というフォルダにコピー
-COPY ./test /app/
+# コマンドを実行
+CMD ["ls","-la"]
