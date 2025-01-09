@@ -1,10 +1,6 @@
 # ベースイメージの指定
-FROM ubuntu:20.04
+FROM rails:5
 
-# イメージ作成時にライブラリ情報を更新するコマンドを実行する
-RUN apt update
-# curlというライブラリをインストール
-RUN apt install -y curl
+RUN touch hoge.txt
 
-# コマンドを実行
 CMD ["ls","-la"]
