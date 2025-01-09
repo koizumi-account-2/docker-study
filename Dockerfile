@@ -1,6 +1,9 @@
-# ベースイメージの指定
-FROM rails:5
+FROM ubuntu:20.04
 
-RUN touch hoge.txt
+ENV hello="Hello World"
+ENV hoge="HOGEHOGE"
+ARG message
+RUN echo $message > message.txt
 
-CMD ["ls","-la"]
+
+CMD ["cat","message.txt"]
