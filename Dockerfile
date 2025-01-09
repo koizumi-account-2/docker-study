@@ -7,4 +7,4 @@ RUN apt update
 RUN apt install -y curl
 
 # sample.txt を app　というフォルダにコピー
-COPY ./sample.txt /app/
+COPY ./test /app/
