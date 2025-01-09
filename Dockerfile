@@ -1,12 +1,12 @@
+FROM gcc:12.2.0 AS compiler
+
+WORKDIR /app
+COPY ./hello.c .
+RUN gcc hello.c
+
+
 FROM ubuntu:20.04
-
-# WORK DIRは「/」
-RUN touch 1.txt
-WORKDIR /app/mydir 
-# WORK DIRは「/app/mydir」
-RUN touch 2.txt
-WORKDIR ..
-# WORK DIRは「/app」
-RUN touch 3.txt
-
-CMD ["bash"]
+WORKDIR /app
+# 0番目のfrom(compiler)からa.outをコピーする
+COPY --from=compiler /app/a.out .
+CMD ["./a.out"]
