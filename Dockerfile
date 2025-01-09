@@ -5,3 +5,6 @@ FROM ubuntu:20.04
 RUN apt update
 # curlというライブラリをインストール
 RUN apt install -y curl
+
+# sample.txt を app　というフォルダにコピー
+COPY ./sample.txt /app/
