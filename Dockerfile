@@ -1,9 +1,12 @@
 FROM ubuntu:20.04
 
-ENV hello="Hello World"
-ENV hoge="HOGEHOGE"
-ARG message
-RUN echo $message > message.txt
+# WORK DIRは「/」
+RUN touch 1.txt
+WORKDIR /app/mydir 
+# WORK DIRは「/app/mydir」
+RUN touch 2.txt
+WORKDIR ..
+# WORK DIRは「/app」
+RUN touch 3.txt
 
-
-CMD ["cat","message.txt"]
+CMD ["bash"]
