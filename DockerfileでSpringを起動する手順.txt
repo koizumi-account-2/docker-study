@@ -1,0 +1,13 @@
+DockerfileでSpringを起動する
+
+# Dockerfileがある階層に移動
+cd webapi/api
+
+# image作成
+docker image build -t api-image .
+
+# コンテナ起動
+docker container run -p 8080:8080  --rm -it api-image
+
+# ブラウザから接続確認
+http://localhost:8080/api/hello?lang=ja

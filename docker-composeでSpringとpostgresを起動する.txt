@@ -1,0 +1,25 @@
+# docker-compose.ymlがある階層に移動
+cd webapi
+# 起動
+docker compose up
+
+# ブラウザから接続確認
+http://localhost:8080/api/hello?lang=ja
+
+# DBの確認
+docker compose up db -d
+
+# dbコンテナで確認する
+docker compose exec db bash
+
+# コンテナ内でtable生成を確認する
+psql -U user -d appdb
+
+\dt
+
+
+# 一度composeを落とす
+docker compose down    
+
+# composeを起動 ソースが変わっている場合には--buildでイメージの作り直しをする
+docker compose up --build
