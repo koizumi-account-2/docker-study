@@ -1,12 +1,9 @@
-FROM gcc:12.2.0 AS compiler
+FROM ubuntu:20.04 AS base
+RUN apt update
+CMD ["sh","-c","echo my name is $my_name"]
 
-WORKDIR /app
-COPY ./hello.c .
-RUN gcc hello.c
+FROM base AS dev
+ENV my_name=TEST 
 
-
-FROM ubuntu:20.04
-WORKDIR /app
-# 0番目のfrom(compiler)からa.outをコピーする
-COPY --from=compiler /app/a.out .
-CMD ["./a.out"]
+FROM base AS prod
+ENV my_name=Bob
